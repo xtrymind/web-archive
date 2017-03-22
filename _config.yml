@@ -11,7 +11,7 @@ description: > # this means to ignore newlines until "baseurl:"
 url: "http://xtrymind.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: xtrymind
 github_username:  xtrymind
-
+permalink: "/:title/"
 author:
   name: Dede Dindin Qudsy
   uri: http://xtrymind.github.io/
