@@ -13,6 +13,13 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+# Site settings
+name: xtrymind
+
+author:
+  name: Dede Dindin Qudsy
+  uri: http://xtrymind.github.io/
+
 title: Your awesome title
 email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
@@ -24,11 +31,15 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: xtrymind
 github_username:  xtrymind
 
+# Publishing settings
+permalink: /:title/
 # Build settings
 markdown: kramdown
 theme: minima
 gems:
   - jekyll-feed
+  - jekyll-redirect-from
+  - jekyll-sitemap
 exclude:
   - Gemfile
   - Gemfile.lock

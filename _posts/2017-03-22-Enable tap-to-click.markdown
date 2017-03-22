@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "Enable tap-to-click"
+date:   2017-03-22 09:30:26 +0700
+redirect_from: 2017/03/22/Enable-tap-to-click.html
+---
+install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
+{% highlight bash %}
+$ sudo pacman -S libinput xf86-input-libinput
+{% endhighlight %}
+
+add ``30-touchpad.conf`` to ``/etc/X11/xorg.conf.d/:``
+```
+Section "InputClass"
+       Identifier "tap-by-default"
+       MatchIsTouchpad "on"
+       MatchDriver "libinput"
+       Option "Tapping" "on"
+EndSection
+```
+
+To enable it in current session without restart:
+{% highlight bash %}
+ $ libinput-list-devices  
+ $ xinput list-props "your touchpad devices"  
+ # Enable tap-click  
+ $ xinput set-prop "your touchpad devices" "libinput Tapping Enabled" 1
+{% endhighlight %}
