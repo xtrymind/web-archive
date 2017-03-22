@@ -25,6 +25,7 @@ author:
 markdown: kramdown
 gems:
   - jekyll-feed
+  - jekyll-sitemap
 exclude:
   - Gemfile
   - Gemfile.lock
