@@ -215,6 +215,15 @@
   }
 }
 
+.post-title-blog {
+  letter-spacing: -1px;
+  line-height: 1;
+
+  @include media-query($on-laptop) {
+    font-size: 36px;
+  }
+}
+
 .post-content {
   margin-bottom: $spacing-unit;
 
@@ -241,4 +250,33 @@
       font-size: 18px;
     }
   }
+}
+
+/*
+ *  additions
+ */
+.home_add {
+     height: 200px;
+    // line-height: 200px;
+    // float: left;
+    text-align: center;
+    //font-size: $large-font-size;
+    //padding-bottom: 100px;
+}
+.centered {
+  position: fixed;
+  top: 40%;
+  left: 55%;
+  margin-top: -50px;
+  margin-left: -100px;
+  text-align: center;
+}
+.img-container img {
+    max-height: 100%;
+}
+
+.img-circle {
+    height: 200px;
+    border-radius: 50%;
+    padding-bottom: 10px;
 }
