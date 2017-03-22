@@ -2,23 +2,15 @@
 
   <div class="wrapper">
     <div class="footer-wrapper">
-      Powered by <a href="https://jekyllrb.com/">Jekyll</a> and hosted by <a href="https://github.com/xtrymind/xtrymind.github.io">GitHub</a>
+     Powered by <a href="https://jekyllrb.com/">Jekyll</a> and hosted by <a href="https://github.com/xtrymind/xtrymind.github.io">GitHub</a> &copy; 2017 xtrymind
     </div>
-    
-    <div class="footer-wrapper">
-		<div class="social-media-list">	
-			<a rel="nofollow" href="mailto:{{ site.author.email }}" title="Email me" style="text-decoration: none">
-				<i class="fa fa-envelope fa-lg"></i>
-			</a> 
-		
-			<a rel="nofollow" href="https://github.com/{{ site.author.github }}" title="GitHub" style="text-decoration: none">
-				<i class="fa fa-github fa-lg"></i>
-			</a>
-			
-			<a rel="nofollow" href="https://twitter.com/{{ site.author.twitter }}" title="Twitter" style="text-decoration: none">
-				<i class="fa fa-twitter fa-lg"></i>
-			</a>
-		</div>
-	</div>
+     <div class="footer-wrapper">
+     {% include icon-github.html username=site.github_username %}
+     {% include icon-twitter.html username=site.twitter_username %}
+     {% include icon-instagram.html %}
+     {% include icon-mail.html %}
+    </div>
+
   </div>
+
 </footer>

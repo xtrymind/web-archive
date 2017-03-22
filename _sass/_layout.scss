@@ -2,12 +2,17 @@
  * Site header
  */
 .site-header {
-  // border-top: 5px solid $grey-color-dark;
-  // border-bottom: 1px solid $grey-color-light;
-  min-height: 56px;
+	font-family: inconsolata;
+	border-top: 5px solid $grey-color-dark;
+	border-bottom: 1px solid $grey-color-light;
+	min-height: 56px;
 
   // Positioning context for the mobile navigation icon
   position: relative;
+
+    .wrapper {
+        border-bottom: 1px solid $grey-color-light;
+    }
 }
 
 .site-title {
@@ -33,13 +38,19 @@
   }
 
   .page-link {
-    color: $text-color;
+  font-size: 24px;
+     color: #666666;
     line-height: $base-line-height;
+    text-decoration: none;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
       margin-right: 20px;
     }
+            &:hover {
+
+            color: $grey-color-dark;
+        }
   }
 
   @include media-query($on-palm) {
@@ -76,13 +87,10 @@
     }
 
     .page-link {
+    
       display: block;
       padding: 5px 10px;
 
-      &:not(:last-child) {
-        margin-right: 0;
-      }
-      margin-left: 20px;
     }
   }
 }
@@ -93,15 +101,10 @@
  * Site footer
  */
 .site-footer {
-  // border-top: 1px solid $grey-color-light;
+  border-top: 1px solid $grey-color-light;
   padding: $spacing-unit 0;
-}
-
-.footer-wrapper {
-    font-size: $small-font-size;
-    color: $grey-color;
-    text-align: center;
-    @extend %clearfix;
+  font-family: inconsolata;
+  text-align:center;
 }
 
 .footer-heading {
@@ -111,8 +114,8 @@
 
 .contact-list,
 .social-media-list {
+  list-style: none;
   margin-left: 0;
-  letter-spacing: 3px;
 }
 
 .footer-col-wrapper {
@@ -123,14 +126,14 @@
 }
 
 .footer-col {
-  float: left;
+  float: center;
   margin-bottom: $spacing-unit / 2;
   padding-left: $spacing-unit / 2;
 }
 
 .footer-col-1 {
-  width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-  width:         calc(35% - (#{$spacing-unit} / 2));
+  width: 80px;
+  width: 80px;
 }
 
 .footer-col-2 {
@@ -178,22 +181,36 @@
 }
 
 .post-list {
-  margin-left: 0;
-  list-style: none;
+    font-family: inconsolata;
+    margin-left: 0;
+    list-style: none;
 
-  > li {
-    margin-bottom: $spacing-unit;
-  }
+    > li {
+        margin-bottom: $spacing-unit;
+        clear: both;
+        line-height: 1;
+    }
+
+    h2 {
+        float: left;
+        padding-left: 0.3em;
+    }
+}
+
+.post-date {
+    width: 8em;
+    float: left;
 }
 
 .post-meta {
-  font-size: $small-font-size;
-  color: $grey-color;
+    float: left;
+    font-size: 16px;
+    color: $grey-color;
 }
 
 .post-link {
   display: block;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 
@@ -206,16 +223,8 @@
 }
 
 .post-title {
+font-family: inconsolata;
   font-size: 42px;
-  letter-spacing: -1px;
-  line-height: 1;
-
-  @include media-query($on-laptop) {
-    font-size: 36px;
-  }
-}
-
-.post-title-blog {
   letter-spacing: -1px;
   line-height: 1;
 
@@ -250,33 +259,4 @@
       font-size: 18px;
     }
   }
-}
-
-/*
- *  additions
- */
-.home_add {
-     height: 200px;
-    // line-height: 200px;
-    // float: left;
-    text-align: center;
-    //font-size: $large-font-size;
-    //padding-bottom: 100px;
-}
-.centered {
-  position: fixed;
-  top: 40%;
-  left: 55%;
-  margin-top: -50px;
-  margin-left: -100px;
-  text-align: center;
-}
-.img-container img {
-    max-height: 100%;
-}
-
-.img-circle {
-    height: 200px;
-    border-radius: 50%;
-    padding-bottom: 10px;
 }

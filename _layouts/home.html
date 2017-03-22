@@ -2,11 +2,24 @@
 layout: default
 ---
 
-<div class="home_add">
+<div class="home">
 
-<div class="centered">
-<i class="fa fa-refresh fa-spin fa-3x fa-fw " ></i>
-<br>
+  <h1 class="page-heading">Posts</h1>
+  
+  {{ content }}
 
-</div>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <div class="post-date">
+          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        </div>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title  }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
 </div>
