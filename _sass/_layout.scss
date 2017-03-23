@@ -196,15 +196,24 @@
         padding-left: 0.3em;
     }
 }
+.post-meta-home,
+.post-date-home{
+    float: left;
+    font-size: 16px;
+    color: $grey-color;
+    width: 8em;
 
+}
 .post-date {
     width: 8em;
-    float: left;
+    //float: left;
+    margin: 0;
 }
 
 .post-meta {
-    float: left;
-    font-size: 16px;
+    //float: left;
+    // font-size: 16px;
+    font-size: $small-font-size;
     color: $grey-color;
 }
 

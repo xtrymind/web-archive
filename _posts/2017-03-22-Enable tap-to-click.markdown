@@ -2,7 +2,7 @@
 layout: post
 title:  "Enable tap-to-click"
 date:   2017-03-22 09:30:26 +0700
-redirect_from: 2017/03/22/Enable-tap-to-click.html
+author: Dede Dindin Qudsy
 ---
 install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
 {% highlight bash %}

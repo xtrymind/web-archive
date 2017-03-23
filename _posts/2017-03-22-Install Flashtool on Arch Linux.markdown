@@ -2,6 +2,7 @@
 layout: post
 title:  "Install Flashtool on Arch Linux"
 date:   2017-03-22 10:37 +0700
+author: Dede Dindin Qudsy
 ---
 #### Aur
 clone aur ``git clone https://aur.archlinux.org/xperia-flashtool.git`` (flaged out of date)

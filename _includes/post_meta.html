@@ -1,0 +1,19 @@
+{% if page.author %}
+<!-- Post meta tags for individual post page -->
+<div class="post-meta">
+  <span class="post-date">{{ page.date | date: "%b %-d, %Y" }}</span>{% for author in site.data.authors %}{% if author.name == page.author %} • by <span class="post-author" itemscope itemtype="http://schema.org/Person"> <a href="{{author.google_plus}}" rel="publisher" itemprop="name">{{author.name}}</a> </span>{% endif %}{% endfor %}
+  {% if page.meta %} • {{ page.meta }}</span>{% endif %}
+  <p class="post-tags"><i class="fa fa-tags"></i> {% for tag in page.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>{% if forloop.last != true %}, {% endif %} {% endfor %}</p>
+</div>
+{% endif %}
+
+{% if post.author %}
+<!-- Post meta tags for index page -->
+<div class="post-meta">
+  <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>{% for author in site.data.authors %}{% if author.name == post.author %} • by <span class="post-author" itemscope itemtype="http://schema.org/Person"> <a href="{{author.google_plus}}" rel="publisher" itemprop="name">{{author.name}}</a> </span>{% endif %}{% endfor %}
+{{post.meta}}
+  {% if post.meta %} • {{ post.meta }}</span>{% endif %}
+  <p class="post-tags"><i class="fa fa-tags"></i> {% for tag in post.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;">{{ tag }}</a>{% if forloop.last != true %}, {% endif %}{% endfor %}</p>
+</div>
+{% endif %}
+
