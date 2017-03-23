@@ -196,7 +196,7 @@ Windows 10 Efi partitioning
 Laptop trackpad support: `# pacman -S xf86-input-libinput`
 #### Xorg
 {% highlight bash %}
- $ sudo pacman -S xorg-server xorg-server-utils xorg-xinit xterm
+ $ sudo pacman -S xorg-server xorg-server-utils xorg-xinit xterm xbindkeys
 {% endhighlight %}
 
 #### Bumblebee
@@ -224,20 +224,65 @@ edit ``.xinitrc`` and add
  exec openbox-session
 {% endhighlight %}
 
+#### Touchpad
+install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
+{% highlight bash %}
+$ sudo pacman -S libinput xf86-input-libinput
+{% endhighlight %}
+
+add ``30-touchpad.conf`` to ``/etc/X11/xorg.conf.d/:``
+{% highlight bash %}
+ Section "InputClass"
+       Identifier "tap-by-default"
+       MatchIsTouchpad "on"
+       MatchDriver "libinput"
+       Option "Tapping" "on"
+ EndSection
+{% endhighlight %}
+
+#### Power Management
+#### Powertop
+
+#### Backlight
+
+The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.
+
+{% highlight bash %}
+ $ pacaur -y light
+{% endhighlight %}
+Now, add commands to xbindkeys for manipulating the backlight:
+
+{% highlight bash %}
+ # Backlight Inc
+ "/usr/bin/light -A 5"
+    m:0x0 + c:233
+    XF86MonBrightnessUp
+
+ # Backligth Dec
+ "/usr/bin/light -U 5"
+    m:0x0 + c:232
+    XF86MonBrightnessDown
+{% endhighlight %}
+
 #### Sound
 
 Just install ``alsa-utils``, and use ``alsamixer`` to unmute the master channel. Should just work.
 
 For keyboard hotkeys, add the following to ``xbindkeys`` configuration:
 {% highlight bash %}
- $ grep -A1 amixer ~/.xbindkeysrc
+ # Volume Up
  "/usr/bin/amixer set Master 5%+"
+    m:0x0 + c:123
     XF86AudioRaiseVolume
---
+
+ # VOlume Down
  "/usr/bin/amixer set Master 5%-"
+    m:0x0 + c:122
     XF86AudioLowerVolume
---
+
+ # Mute
  "/usr/bin/amixer set Master toggle"
+    m:0x0 + c:121
     XF86AudioMute
 {% endhighlight %}
 #### Disk
