@@ -1,0 +1,38 @@
+---
+layout: post
+title:  "Fix geany warning of failed to load icon"
+date:   2017-03-24 16:45:26 +0700
+author: Dede Dindin Qudsy
+tags:   [archlinux, geany, linux]
+---
+```
+If by any chance you came across geany problem of failed to load icon like
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-var':
+Icon 'classviewer-var' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-method':
+Icon 'classviewer-method' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-var':
+Icon 'classviewer-var' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-method':
+Icon 'classviewer-method' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-var':
+Icon 'classviewer-var' not present in theme
+
+(geany:2851): Geany-WARNING **: failed to load icon 'classviewer-method':
+Icon 'classviewer-method' not present in theme
+
+(geany:2851): Gtk-WARNING **: Error loading theme icon 'geany-save-all'
+for stock: Icon 'geany-save-all' not present in theme
+
+(geany:2851): Gtk-WARNING **: Error loading theme icon 'geany-build' for
+stock: Icon 'geany-build' not present in theme
+```
+just run ``gtk-update-icon-cache`` hicolor icons to fix that
+{% highlight bash %}
+ $ sudo gtk-update-icon-cache /usr/share/icons/hicolor -f
+{% endhighlight %}
