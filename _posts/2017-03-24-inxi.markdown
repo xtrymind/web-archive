@@ -1,0 +1,36 @@
+---
+layout: post
+title:  "Inxi great cli system informations"
+date:   2017-03-24 19:45:26 +0700
+author: Dede Dindin Qudsy
+tags:   [archlinux, inxi, linux, system-informations]
+---
+There's lot of cli based system information on linux, like neofetch, screenfetch, etc.
+inxi is one of those cli based system information, with a lot of options to get all system informations you need
+like cpu, machine, bios graphic, network, audio, drives and more.
+
+install with command
+{% highlight bash %}
+ $ sudo pacman -S inxi
+{% endhighlight %}
+
+first, run this command
+{% highlight bash %}
+ $ inxi --recommend
+{% endhighlight %}
+that command will check application dependencies + recommends, and directories, then shows what package(s) you need to install to add support for that feature
+
+{% highlight bash %}
+ # this command will give you basic output of system informations
+ $ inxi -b
+ 
+ # or with inxi -F
+ $ inxi -F
+ 
+ # run man inxi for detailed informations to get system information you need
+ $ man inxi
+{% endhighlight %}
+
+or check [inxi-man](http://smxi.org/docs/inxi-man.htm)
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/UAB2n"><a href="//imgur.com/UAB2n">inxi</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
