@@ -193,7 +193,6 @@ Windows 10 Efi partitioning
  $ sudo pacman -S nvidia
 {% endhighlight %}
 
-Laptop trackpad support: `# pacman -S xf86-input-libinput`
 #### Xorg
 {% highlight bash %}
  $ sudo pacman -S xorg-server xorg-server-utils xorg-xinit xterm xbindkeys
@@ -242,7 +241,26 @@ add ``30-touchpad.conf`` to ``/etc/X11/xorg.conf.d/:``
 
 #### Power Management
 #### Powertop
+install it by command
+{% highlight bash %}
+ $ sudo pacman -S powertop
+{% endhighlight %}
+and add systemd service, create ``/etc/systemd/system/powertop.service```
+{% highlight bash %}
+[Unit]
+Description=Powertop tunings
 
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/powertop --auto-tune
+
+[Install]
+WantedBy=multi-user.target
+{% endhighlight %}
+then enable it
+{% highlight bash %}
+ $ sudo systemctl enable powertop.service
+{% endhighlight %}
 #### Backlight
 
 The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.
