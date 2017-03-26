@@ -1,0 +1,65 @@
+---
+layout: post
+title:  "Pacserve, usefull tool for share pacman packages"
+date:   2017-03-26 17:44:26 +0700
+author: Dede Dindin Qudsy
+tags:   [archlinux, pacman, tools]
+---
+If you have multiple Arch Linux machine (and slow internet like me :p) you could update Arch on one machine ane make that server for your other Arch machine to update. Xyne make apps to do that magic called ``pacserve``
+
+To install ``pacserve`` you can add xyne repo or with aur, either way, it's same.
+
+### repo
+add xyne repo to ``/etc/pacman.conf``
+```
+[xyne-any]
+# A repo for Xyne's own projects: http://xyne.archlinux.ca/projects/
+# Packages for "any" architecture.
+# Use this repo only if there is no matching [xyne-*] repo for your architecture.
+SigLevel = Required
+Server = http://xyne.archlinux.ca/repos/xyne
+
+[xyne-i686]
+# A repo for Xyne's own projects: http://xyne.archlinux.ca/projects/
+# Packages for the "i686" architecture.
+# Note that this includes all packages in [xyne-any].
+SigLevel = Required
+Server = http://xyne.archlinux.ca/repos/xyne
+
+[xyne-x86_64]
+# A repo for Xyne's own projects: http://xyne.archlinux.ca/projects/
+# Packages for the "x86_64" architecture.
+# Note that this includes all packages in [xyne-any].
+SigLevel = Required
+Server = http://xyne.archlinux.ca/repos/xyne
+``` 
+and then
+{% highlight bash %}
+ $ sudo pacman -Sy
+ $ sudo pacman -S pacserve
+{% endhighlight %}
+
+### aur
+
+{% highlight bash %}
+ $ gpg --recv-keys --keyserver hkp://pgp.mit.edu C2E5C0D2
+ $ pacaur -y pacserve
+{% endhighlight %}
+
+And then enable and start pacserve service on your server and other Arch machine
+{% highlight bash %}
+ $ sudo systemctl enable pacserve
+ $ sudo systemctl start pacserve
+{% endhighlight %}
+
+if you wanna update from your server use command :
+{% highlight bash %}
+ $ sudo pacsrv -Syu
+{% endhighlight %}
+
+If you do not want to use the pacsrv wrapper script then add ``Include = /etc/pacman.d/pacserve`` (above official repo) to your pacman.conf
+{% highlight bash %}
+ [core]
+ Include = /etc/pacman.d/pacserve
+ Include = /etc/pacman.d/mirrorlist
+{% endhighlight %}
