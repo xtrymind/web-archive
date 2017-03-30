@@ -16,11 +16,21 @@ author:
   name: Dede Dindin Qudsy
   uri: http://xtrymind.github.io/
   email: xtrymind@gmail.com
-  google-plus: +xtrymind
+  google-plus: +DedeDindinQudsy
   github: xtrymind
   twitter: xtrymind
   instagram: xtrymind
- 
+
+twitter:
+  username: xtrymind
+
+social:
+  name: Dede Dindin Qudsy
+  links:
+    - https://twitter.com/xtrymind
+    - https://plus.google.com/+DedeDindinQudsy
+    - https://github.com/xtrymind
+
 # Build settings
 markdown: kramdown
 tag_page_layout: tag_page

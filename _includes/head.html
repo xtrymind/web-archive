@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta name="google-site-verification" content="f3P3ADIscFdbHfpCul8J2S1d5mDS-zKj850nbgQQIoI" />
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
@@ -14,4 +14,5 @@
   {% include google-analytics.html %}
   {% endif %}
   {% include head_vendor.html %}
+  {% seo %}
 </head>
