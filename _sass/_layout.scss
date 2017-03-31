@@ -181,20 +181,11 @@
 }
 
 .post-list {
-    font-family: inconsolata;
+    font-family: noto sans;
     margin-left: 0;
     list-style: none;
+    margin-bottom: 0;
 
-    > li {
-        margin-bottom: $spacing-unit;
-        clear: both;
-        line-height: 1;
-    }
-
-    h2 {
-        float: left;
-        padding-left: 0.3em;
-    }
 }
 .post-meta-home,
 .post-date-home{
@@ -206,22 +197,28 @@
 }
 .post-date {
     width: 8em;
-    //float: left;
     margin: 0;
 }
 
 .post-meta {
-    //float: left;
-    // font-size: 16px;
+    font-size: $small-font-size;
+    color: $grey-color;
+}
+
+.post-excerpt {
+  color: #aaa;
+  font-style: italic;
+}
+
+.post-meta {
     font-size: $small-font-size;
     color: $grey-color;
 }
 
 .post-link {
-  display: block;
-  font-size: 16px;
+  //display: block;
+  font-size: 22px;
 }
-
 
 
 /**
