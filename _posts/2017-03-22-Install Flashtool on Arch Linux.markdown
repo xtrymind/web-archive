@@ -5,6 +5,9 @@ date:   2017-03-22 10:37 +0700
 author: Dede Dindin Qudsy
 tags:   [archlinux, flashtool, sony, android, xperia, m4aqua]
 ---
+Flashtool is a nice tool to flash a firmware for your Sony Phone (and sony erriccson) in case a new firmware come out or you soft brick your phone. 
+And with XperiaFirm to download firmware instead of create bundle from sony software updates(on windows).
+
 #### Aur
 clone aur ``git clone https://aur.archlinux.org/xperia-flashtool.git`` (flaged out of date)
 {% highlight bash %}
