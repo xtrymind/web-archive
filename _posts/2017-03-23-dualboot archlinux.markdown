@@ -26,7 +26,7 @@ tags:   [archlinux, windows, Linux]
 	  - [Driver](#driver)
 	  - [Xorg](#xorg)
 	  - [Bumblebee](#bumblebee)
-	  - [Openbox](#openbox)
+	- [Terminal](#terminal)
 	- [Touchpad](#touchpad)
 	- [Sound](#sound)
 	- [Hard Drive](#disk)
@@ -187,7 +187,7 @@ Windows 10 Efi partitioning
  $ sudo pacman -Sy
 {% endhighlight %}
 
-#### Graphics
+#### X11 and I3 windows manager
 
 #### Driver
 {% highlight bash %}
@@ -213,16 +213,15 @@ Windows 10 Efi partitioning
  0000:01:00.0 OFF
 {% endhighlight %}
 
-#### Openbox
+
+#### Terminal
+rxvt-unicode or urxvt is a nice terminal it's small and simple to configure (well it's will take a while to get the best configurations :p)
+
 {% highlight bash %}
- $ sudo pacman -S openbox tint2
- $ cp /etc/X11/xinit/xinitrc ~/.xinitrc
- $ cp -R /etc/xdg/openbox ~/.config
+ $ sudo pacman -S rxvt-unicode urxvt-perls
 {% endhighlight %}
-edit ``.xinitrc`` and add
-{% highlight bash %}
- exec openbox-session
-{% endhighlight %}
+
+check [arch wiki](https://wiki.archlinux.org/index.php/Rxvt-unicode) for more detil to configure.
 
 #### Touchpad
 install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
