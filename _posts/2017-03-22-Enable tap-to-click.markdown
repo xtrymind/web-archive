@@ -19,6 +19,8 @@ Section "InputClass"
        MatchIsTouchpad "on"
        MatchDriver "libinput"
        Option "Tapping" "on"
+       Option "Natural Scrolling "on"
+       Option "Accel Speed "0.5"
 EndSection
 ```
 
