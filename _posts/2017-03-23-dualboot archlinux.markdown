@@ -27,6 +27,7 @@ tags:   [archlinux, windows, Linux]
 	  - [Xorg](#xorg)
 	  - [Bumblebee](#bumblebee)
 	  - [Openbox](#openbox)
+	- [Touchpad](#touchpad)
 	- [Sound](#sound)
 	- [Hard Drive](#disk)
 	  - [SSD](#ssd)
@@ -236,6 +237,8 @@ add ``30-touchpad.conf`` to ``/etc/X11/xorg.conf.d/:``
        MatchIsTouchpad "on"
        MatchDriver "libinput"
        Option "Tapping" "on"
+       Option "Natural Scrolling" "on"
+       Option "Accel Speed" "0.5"
  EndSection
 {% endhighlight %}
 
