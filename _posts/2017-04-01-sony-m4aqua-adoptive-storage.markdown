@@ -4,6 +4,7 @@ title:  "Enable adoptive storage on Sony Xperia M4Aqua"
 date:   2017-04-01 07:39:26 +0700
 author: Dede Dindin Qudsy
 tags:   [android,sony,xperia,m4aqua,adoptive storage]
+last_modified_at: 2017-04-05 23:10:26 +0700
 ---
 Adoptive storage is with a simple explanation is make your SDcard shared with internal storage to make it bigger.
 
@@ -27,7 +28,10 @@ You need to enable USB debugging on Developer options first, then do the followi
    disk:179,64
  $ sm partition disk:179,64 mixed 50
 {% endhighlight %}
+
+Note :
  - ``mixed 50`` it's mean your sdcard will be halved, half for your adoptive and half for your sdcard, if you want smaller adoptive use ``mixed 70`` that mean, 30 for adoptive and 70 for your sdcard. 
  - if you want to remove adoptive, use ``sm partition disk:diskid public``
-
-<a href="http://imgur.com/DOQzDWx"><img src="http://i.imgur.com/DOQzDWx.png" title="source: imgur.com" height="50%" width="50%"/></a>
+ - Since M4Aqua variant max storage is 16 GB, you should set your adoptive storage at 8 GB or less, in my experience set more than 8GB, i haven't encounter any problem beside storage total size not counting properly like ``-811228283 GB``. But some people encounter problem when they set more than 8G B.
+ 
+<a href="http://imgur.com/u9QiztC"><img src="http://i.imgur.com/u9QiztC.png" title="source: imgur.com" height="50%" width="50%"/></a><a href="http://imgur.com/DOQzDWx"><img src="http://i.imgur.com/DOQzDWx.png" title="source: imgur.com" height="50%" width="50%"/></a>
