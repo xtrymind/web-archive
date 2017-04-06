@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Install Flashtool on Arch Linux"
 date:   2017-03-22 10:37 +0700
 author: Dede Dindin Qudsy

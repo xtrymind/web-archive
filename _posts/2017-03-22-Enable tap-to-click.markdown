@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Enable tap-to-click"
 date:   2017-03-22 09:30:26 +0700
 author: Dede Dindin Qudsy

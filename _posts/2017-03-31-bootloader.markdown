@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Bootloader / boot manager for your arch and windows dualboot installation"
 date:   2017-03-31 07:44:26 +0700
 author: Dede Dindin Qudsy

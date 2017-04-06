@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Fix geany warning of failed to load icon"
 date:   2017-03-24 16:45:26 +0700
 author: Dede Dindin Qudsy

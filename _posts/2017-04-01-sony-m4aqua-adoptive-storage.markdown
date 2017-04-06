@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Enable adoptive storage on Sony Xperia M4Aqua"
 date:   2017-04-01 07:39:26 +0700
 author: Dede Dindin Qudsy

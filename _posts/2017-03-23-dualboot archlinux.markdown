@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Dualboot archlinux & windows 10 on Asus A46CB"
 date:   2017-03-23 14:20:26 +0700
 author: Dede Dindin Qudsy

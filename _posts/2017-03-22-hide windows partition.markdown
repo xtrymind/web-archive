@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Hide windows partitions"
 date:   2017-03-22 10:53 +0700
 author: Dede Dindin Qudsy
