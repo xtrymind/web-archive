@@ -44,7 +44,6 @@ timezone: Asia/Jakarta
 gems:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-seo-tag
   - jekyll/tagging
   - jekyll-sitemap
 exclude:
