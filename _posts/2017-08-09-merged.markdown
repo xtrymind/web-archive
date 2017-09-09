@@ -9,7 +9,7 @@ last_modified_at: 2017-08-09 09:50:00 +0700
 ---
 Pertama kali pakai Pexo ROM v3 dan yang saya sukai adalah di status bar, wifi icon menyatu dengan signal icon. Karena Pexo cocoknya untuk M4Aqua dual sim (sebenernya tidak ada masalah dengan single sim, namun saya kurang nyaman he he) saya pindah lagi ke stock rom, dan saya ingin wifi saya menyatu dengan signal bar.
 
-Ketemu tutorialnya di [sini] (https://forum.xda-developers.com/crossdevice-dev/sony-themes-apps/tut-merged-wifi-signal-icons-lp-mm-t3408702) langsung saja saya edit SystemUI nya.
+Ketemu tutorialnya di [sini](https://forum.xda-developers.com/crossdevice-dev/sony-themes-apps/tut-merged-wifi-signal-icons-lp-mm-t3408702) langsung saja saya edit SystemUI nya.
  
 Barangkali ada yang berminat juga dan malas mengedit SystemUI, bisa didownload dan pindahkan ke file system/priv-app/systemui dan set permission rw-r--r-- atau 644 untuk octal nya.
 
