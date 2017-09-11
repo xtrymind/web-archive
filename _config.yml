@@ -12,6 +12,9 @@ url: "http://xtrymind.github.io" # the base hostname & protocol for your site, e
 twitter_username: xtrymind
 github_username:  xtrymind
 
+# Google Analytics
+google_analytics: UA-106200856-1
+
 disqus:
   shortname: xtrymind-github-io
 
