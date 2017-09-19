@@ -11,7 +11,7 @@ description: > # this means to ignore newlines until "baseurl:"
 url: "http://xtrymind.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: xtrymind
 github_username:  xtrymind
-
+repository: xtrymind/xtrymind.github.io
 # Google Analytics
 google_analytics: UA-106200856-1
 
@@ -19,6 +19,7 @@ disqus:
   shortname: xtrymind-github-io
 
 permalink: "/:title/"
+
 author:
   name: Dede Dindin Qudsy
   uri: http://xtrymind.github.io/
@@ -51,6 +52,14 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-exclude:
-  - Gemfile
-  - Gemfile.lock
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
