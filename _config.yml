@@ -44,11 +44,13 @@ tag_page_layout: tag_page
 tag_page_dir: tag
 timezone: Asia/Jakarta
 
-gems:
+plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll/tagging
   - jekyll-sitemap
+  - jekyll-seo-tag
+
 exclude:
   - Gemfile
   - Gemfile.lock
