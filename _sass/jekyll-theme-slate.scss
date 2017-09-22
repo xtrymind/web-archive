@@ -95,6 +95,8 @@ p {
 footer p {
   color: #f2f2f2;
   text-align: center;
+  margin: 0px;
+  padding: 5px 0 0 0;
 }
 
 a {
@@ -368,10 +370,12 @@ Full-Width Styles
   background: -ms-linear-gradient(top, #373737, #212121);
   background: -o-linear-gradient(top, #373737, #212121);
   background: linear-gradient(top, #373737, #212121);
+  height: 40px;
 }
 
 #header_wrap .inner {
-  padding: 50px 10px 7px 10px;
+  padding: 10px 0px 0px 0px;
+  left: 10px;
 }
 
 #project_title {
@@ -441,6 +445,7 @@ Full-Width Styles
 
 #footer_wrap {
   background: #212121;
+  height: 35px;
 }
 
 
@@ -551,4 +556,21 @@ Small Device Styles
     font-size: 11px;
   }
 
+}
+
+  .page-link {
+	font-size: 20px;
+	color: #FFFFFF;
+	line-height: 1.0;
+	text-decoration: none;
+
+	// Gaps between nav items, but not on the last one
+	&:not(:last-child) {
+		margin-right: 20px;
+    }
+
+	&:hover {
+		color: #0F79D0;
+		display: block;
+	}
 }
