@@ -1,56 +1,39 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: xtrymind blog
+title: xtrymind
 email: xtrymind@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  another version of xtrymind random writing~
-#baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://xtrymind.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  a blog by xtrymind a.k.a dede dindin qudsy fill with 
+  random writing about android, linux, windows, 
+  and other stuff that i find interesting.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://xtrymind.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: xtrymind
 github_username:  xtrymind
-repository: xtrymind/xtrymind.github.io
+
 # Google Analytics
 google_analytics: UA-106200856-1
 
-disqus:
-  shortname: xtrymind-github-io
-
-permalink: "/:title/"
-
-author:
-  name: Dede Dindin Qudsy
-  uri: http://xtrymind.github.io/
-  email: xtrymind@gmail.com
-  google-plus: +DedeDindinQudsy
-  github: xtrymind
-  twitter: xtrymind
-  instagram: xtrymind
-
-twitter:
-  username: xtrymind
-
-social:
-  name: Dede Dindin Qudsy
-  links:
-    - https://twitter.com/xtrymind
-    - https://plus.google.com/+DedeDindinQudsy
-    - https://github.com/xtrymind
-
 # Build settings
 markdown: kramdown
-tag_page_layout: tag_page
-tag_page_dir: tag
-timezone: Asia/Jakarta
 
 plugins:
   - jekyll-feed
-  - jekyll-sitemap
-  - jekyll/tagging
-  - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-last-modified-at
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

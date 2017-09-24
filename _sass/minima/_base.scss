@@ -85,26 +85,31 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
 }
 
-
-
 /**
  * Links
  */
 a {
-  color: $link-color;
+  color: $brand-color;
+  //@include fake-underline(lighten($blue,20%));
   text-decoration: none;
-
   &:visited {
-    //color: lighten($link-color, 15%);
+    color: darken($brand-color, 15%);
   }
 
   &:hover {
-    //color: $text-color;
-    color: lighten($link-color, 25%);
+    color: $brand-color;
+	
+  //@include fake-underline(lighten($blue,40%));
+  }
+
+  .social-media-list &:hover {
     text-decoration: none;
+
+    .username {
+      text-decoration: underline;
+    }
   }
 }
-
 
 
 /**
@@ -114,7 +119,7 @@ blockquote {
   color: $grey-color;
   border-left: 4px solid $grey-color-light;
   padding-left: $spacing-unit / 2;
-  font-size: 18px;
+  @include relative-font-size(1.125);
   letter-spacing: -1px;
   font-style: italic;
 
@@ -130,7 +135,7 @@ blockquote {
  */
 pre,
 code {
-  font-size: 15px;
+  @include relative-font-size(0.9375);
   border: 1px solid $grey-color-light;
   border-radius: 3px;
   background-color: #eef;
@@ -189,16 +194,51 @@ pre {
 /**
  * Icons
  */
-.icon {
+.icon > svg {
+  display: inline-block;
+  vertical-align: middle;
 
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
+  path {
+    fill: $grey-color;
+  }
+}
 
-        path {
-            fill: $grey-color;
-        }
+.social-media-list {
+  .icon {
+    padding-right: 5px;
+  }
+
+  li + li {
+    padding-top: 5px;
+  }
+}
+
+
+
+/**
+ * Tables
+ */
+table {
+  margin-bottom: $spacing-unit;
+  width: 100%;
+  text-align: $table-text-align;
+  color: lighten($text-color, 18%);
+  border-collapse: collapse;
+  border: 1px solid $grey-color-light;
+  tr {
+    &:nth-child(even) {
+      background-color: lighten($grey-color-light, 6%);
     }
+  }
+  th, td {
+    padding: ($spacing-unit / 3) ($spacing-unit / 2);
+  }
+  th {
+    background-color: lighten($grey-color-light, 3%);
+    border: 1px solid darken($grey-color-light, 4%);
+    border-bottom-color: darken($grey-color-light, 12%);
+  }
+  td {
+    border: 1px solid $grey-color-light;
+  }
 }
