@@ -290,16 +290,27 @@
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
+    width: 200px;
+    color: #000;
     text-align: center;
     border-radius: 6px;
-    padding: 2px 0;
-
-    /* Position the tooltip */
+    padding: 5px 0;
     position: absolute;
     z-index: 1;
+    bottom: 150%;
+    left: 40%;
+    margin-left: -90px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 47%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
