@@ -6,6 +6,8 @@ date:   2017-03-23 14:20:26 +0700
 author: Dede Dindin Qudsy
 tags:   [archlinux, windows, Linux]
 ---
+`incomplete`
+
 **Table of Contents**
 
 - [Archlinux on Asus A46CB](#archlinux-on-asus-a46cb)
@@ -41,7 +43,7 @@ tags:   [archlinux, windows, Linux]
 2. Disable Secure Boot
 
 ### Partitioning
-Windows 10 Efi partitioning
+an example of Windows 10 Efi partitioning on 120GB SSD
 
 | Partition  | Location | Size       | File system |
 | ---------- |:--------:|:----------:|:-----------:|
@@ -53,12 +55,12 @@ Windows 10 Efi partitioning
 
 #### Format and mount disks
 
-```
-# mkfs.ext4 /dev/sda5
-# mount /dev/sda5 /mnt
-# mkdir /mnt/boot
-# mount /dev/sda2 /mnt/boot
-```
+{% highlight shell_session %}
+ # mkfs.ext4 /dev/sda5
+ # mount /dev/sda5 /mnt
+ # mkdir /mnt/boot
+ # mount /dev/sda2 /mnt/boot
+{% endhighlight %}
 ### Install base system
 
 {% highlight bash %}
@@ -75,6 +77,7 @@ Windows 10 Efi partitioning
 ### Configure base system
 #### Chroot
 {% highlight bash %}
+ # enter chroot
  arch-chroot /mnt
  
  # password for root
@@ -94,38 +97,35 @@ Windows 10 Efi partitioning
  
  # Hostname
  echo arch >> /etc/hostname
- 
- nano /etc/hosts
- # /etc/hosts should look like:
 
+ # edit /etc/hosts
  127.0.0.1   localhost.localdomain   localhost 
  ::1         localhost.localdomain   localhost
  127.0.1.1   arch.localdomain        arch 
 {% endhighlight %}
 
 #### Bootloader
-{% highlight bash %}
+{% highlight shell %}
  # install intel ucode 
  pacman -S intel-ucode
  # Initial ramdisk environment
  mkinitcpio -p linux
 
- #grub support for mbr and gpt partitions, but if it's gpt, better use bootctl
-
+ # install bootloader
  bootctl --path=/boot install
 
- #Then add following content to ``/boot/loader/entries/arch.conf``
+ # check partuuid of / partition
+ blkid -s PARTUUID -o value /dev/sdxY
+
+ #Then add following content to /boot/loader/entries/arch.conf
 
  tittle    Arch
  linux     /vmlinuz-linux
  initrd    /initramfs-linux.img
  initrd    /intel-ucode.img
- options   root=/dev/sda6 rw
+ options   root=PARTUUID=xxxxx-xxx-xx rw
 
- #note : for ``options   root=`` it's better to use uuid
-
- # change entries on ``/boot/loader/loader.conf``
-
+ # change entries on /boot/loader/loader.conf
  timeout 5
  default arch
 {% endhighlight %}
@@ -140,7 +140,7 @@ Windows 10 Efi partitioning
 {% endhighlight %}
 #### Reboot
 {% highlight bash %}
- exit   
+ exit
  umount -R /mnt/boot
  umount -R /mnt
  reboot
@@ -156,7 +156,7 @@ Windows 10 Efi partitioning
 
 #### User Management
 {% highlight bash %}
-  useradd -m -g users -G wheel -s /bin/zsh xtrymind
+  useradd -m -G wheel -s /bin/zsh xtrymind
   passwd xtrymind
   
  #enable sudo for users
@@ -168,16 +168,14 @@ Windows 10 Efi partitioning
 #### Arch User Repository
 ``pacaur`` is popular front end for installing aur package
 {% highlight bash %}
- $ sh -c "$(curl -fsSL \
-   https://raw.githubusercontent.com/xtrymind/dotfiles/master/pacaur.sh)"
+ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/xtrymind/dotfiles/master/pacaur.sh)"
 {% endhighlight %}
 
 #### Mirror
 {% highlight bash %}
  # best mirror
  $ sudo pacman -S reflector
- $ sudo reflector --latest 200 --protocol http --protocol https \
-   --sort rate --save /etc/pacman.d/mirrorlist
+ $ sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
  
  # enable 32bit support
  # In `/etc/pacman.conf`, uncomment:
@@ -188,11 +186,11 @@ Windows 10 Efi partitioning
  $ sudo pacman -Sy
 {% endhighlight %}
 
-#### X11 and I3 windows manager
+#### Display
 
 #### Driver
 {% highlight bash %}
- $ sudo pacman -S nvidia
+ $ sudo pacman -S nvidia mesa
 {% endhighlight %}
 
 #### Xorg
@@ -202,7 +200,7 @@ Windows 10 Efi partitioning
 
 #### Bumblebee
 {% highlight bash %}
- $ sudo pacman -S mesa bbswitch bumblebee
+ $ sudo pacman -S bbswitch bumblebee
  $ sudo gpasswd -a xtrymind bumblebee
  $ sudo systemctl enable bumblebeed
 {% endhighlight %}
