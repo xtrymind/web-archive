@@ -5,8 +5,8 @@ title:  "Alternative way to set up python2 for Android Build on Arch Linux"
 date:   2017-04-09 15:45:00 +0700
 author: Dede Dindin Qudsy
 tags:   [android,archlinux]
-last_modified_at: 2017-10-06 08:49:00 +0700
-desc_update: "there's update on wiki"
+last_modified_at: 2017-10-28 11:58:00 +0700
+desc_update: "change android build to python2"
 ---
 
 EDIT :
@@ -20,14 +20,14 @@ but since android still use python2, and arch use python3 by default, you will h
 since it's like that, i'm using this trick to set up python2 :
 
 {% highlight shell %}
- $ sudo mkdir /opt/android-build
- $ cd /opt/android-build
+ $ sudo mkdir /opt/python2
+ $ cd /opt/python2
  $ sudo ln -s $(which python2) python
 {% endhighlight %}
 
 then put this on build script or paste on current terminal or in .zshrc or .bashrc
 {% highlight shell %}
- export PATH="/opt/android-build:$PATH"
+ export PATH="/opt/python2:$PATH"
 {% endhighlight %}
  
 source :
