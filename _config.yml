@@ -28,6 +28,7 @@ google_analytics: UA-106200856-1
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 
 plugins:
   - jekyll-feed

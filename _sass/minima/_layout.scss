@@ -213,7 +213,7 @@
 		}
 		
 		&:hover {
-			color: $blue;
+			color: $line;
 		}
   }
 }
@@ -254,7 +254,7 @@
   }
 
   &:hover {
-    @include fake-underline(lighten($blue,40%));
+    @include fake-underline(lighten($line,5%));
   }
   }
   
