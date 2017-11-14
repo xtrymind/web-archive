@@ -10,19 +10,19 @@ layout: default
         <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><i class="fa fa-user-circle" aria-hidden="true"></i> {{ page.author }}</span></span>
       {% endif %}
       </br>
-	<i class="fa fa-calendar"></i> 
+	<i class="fa fa-calendar"></i>
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        {{ page.date | date: date_format }} •
+        {{ page.date | date: date_format }}
       </time> 
       {% if page.last_modified_at %}
-      Updated at 
-		{% if page.desc_update %} 
+      • Updated at
+		{% if page.desc_update %}
 		<time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">
 			<span class="tooltip" >{{ page.last_modified_at| date: "%b %-d, %Y" }}
 				<span class="tooltiptext">{{ page.desc_update }} </span>
 			</span>
-			 </time> 
+			 </time>
 		{% else %}
 		 <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">
 			{{ page.last_modified_at| date: "%b %-d, %Y" }}
