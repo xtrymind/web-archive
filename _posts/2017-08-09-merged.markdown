@@ -11,9 +11,10 @@ Pertama kali pakai Pexo ROM v3 dan yang saya sukai adalah di status bar, wifi ic
 
 Ketemu tutorialnya di [sini](https://forum.xda-developers.com/crossdevice-dev/sony-themes-apps/tut-merged-wifi-signal-icons-lp-mm-t3408702) langsung saja saya edit SystemUI nya.
  
-Barangkali ada yang berminat juga dan malas mengedit SystemUI, bisa didownload dan pindahkan ke file system/priv-app/systemui dan set permission rw-r--r-- atau 644 untuk octal nya.
+Barangkali ada yang berminat juga dan malas mengedit SystemUI, bisa didownload dan pindahkan ke file `/system/priv-app/systemui` dan set permission `rw-r--r--` atau 644 untuk octal nya. dan jangan lupa backup systemui original.
 
-<a href="https://imgur.com/N5QdiyP"><img src="https://i.imgur.com/N5QdiyP.png" title="source: imgur.com" /></a>
+Download : [SystemUI merged](https://www.androidfilehost.com/?fid=673368273298984294)
 
-Download :
- - [SystemUI](https://www.androidfilehost.com/?fid=673368273298984294)
+![Imgur](https://i.imgur.com/N5QdiyP.png)
+
+
