@@ -14,67 +14,67 @@ note that systemd-boot and rEFInd not support mbr/bios, only GRUB support mbr/bi
 
 ### systemd-boot
 
-{% highlight bash %}
- # install intel-ucode if you use intel proc
- $ pacman -S intel-ucode
- # Initial ramdisk environment
- $ mkinitcpio -p linux
- $ bootctl --path=/boot install
-{% endhighlight %}
+```shell_session
+install intel-ucode if you use intel proc
+users $ pacman -S intel-ucode
+Initial ramdisk environment
+users $ mkinitcpio -p linux
+users $ bootctl --path=/boot install
+```
 
 Then add following content to ``/boot/loader/entries/arch.conf``
-{% highlight bash %}
- tittle    Arch
- linux     /vmlinuz-linux
- initrd    /initramfs-linux.img
- initrd    /intel-ucode.img
- options   root=UUID=***** rw
-{% endhighlight %}
+```conf
+tittle    Arch
+linux     /vmlinuz-linux
+initrd    /initramfs-linux.img
+initrd    /intel-ucode.img
+options   root=PARTUUID=***** rw
+```
 
 change entries on ``/boot/loader/loader.conf``
-{% highlight bash %}
- timeout 5
- default arch
-{% endhighlight %}
+```conf
+timeout 5
+default arch
+```
 
 More info :[systemd-boot](https://wiki.archlinux.org/index.php/Systemd-boot)
 
 ### rEFInd
 
-{% highlight bash %}
- # install intel-ucode if you use intel proc
- $ pacman -S intel-ucode refind-efi
- # Initial ramdisk environment
- $ mkinitcpio -p linux
+```shell_session
+install intel-ucode if you use intel proc
+users $ pacman -S intel-ucode refind-efi
+Initial ramdisk environment
+users $ mkinitcpio -p linux
  
- $ refind-install
- # refind will find your ESP partitions but you can manualy pointed your ESP
- # where /dev/sdaXY is your ESP partitions
- $ refind-install --usedefault /dev/sdXY
-{% endhighlight %}
+users $ refind-install
+
+refind will find your ESP partitions but in case something wrong, you can manualy pointed your ESP where /dev/sdaXY is your ESP partitions
+users $ refind-install --usedefault /dev/sdXY
+```
 
 More info :[rEFInd](https://wiki.archlinux.org/index.php/REFInd)
 
 ### GRUB
 
-{% highlight shell %}
- # install intel-ucode if you use intel proc
- $ pacman -S dosfstools grub efibootmgr intel-ucode
- $ mkdir /boot/efi
- # where /dev/sda2 is your windows ESP partitions
- $ mount /dev/sda2 /boot/efi
-{% endhighlight %}
+```shell_session
+install intel-ucode if you use intel proc
+users $ pacman -S dosfstools grub efibootmgr intel-ucode
+users $ mkdir /boot/efi
+where /dev/sda2 is your windows ESP partitions
+users $ mount /dev/sda2 /boot/efi
+```
 
 Edit `/etc/default/grub`, set `DEFAULT_TIMEOUT=30`.
 
-{% highlight bash %}
- $ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --recheck
- $ grub-mkconfig -o boot/grub/grub.cfg
-{% endhighlight %}
+```shell_session
+users $ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --recheck
+users $ grub-mkconfig -o boot/grub/grub.cfg
+```
 
 Now, let's add Windows to the GRUB menu. Edit `/boot/grub/grub.cfg` and add the following menuentry after the Arch Linux menuentries:
 
-```
+```conf
 menuentry "Windows 10" --class windows --class os {
     insmod part_gpt
     insmod fat
@@ -88,14 +88,14 @@ menuentry "Windows 10" --class windows --class os {
 where :
 
 `$fs_uuid` by the output of 
-{% highlight shell %}
- $ grub-probe --target=fs_uuid /boot/efi/EFI/Microsoft/Boot/bootmgfw.efi
-{% endhighlight %}
+```shell_session
+users $ grub-probe --target=fs_uuid /boot/efi/EFI/Microsoft/Boot/bootmgfw.efi
+```
 
 
 `$hints_string`  by the output of
-{% highlight shell %}
- $ grub-probe --target=hints_string /boot/efi/EFI/Microsoft/Boot/bootmgfw.efi
-{% endhighlight %}
+```shell_session
+users $ grub-probe --target=hints_string /boot/efi/EFI/Microsoft/Boot/bootmgfw.efi
+```
 
 More info :[GRUB](https://wiki.archlinux.org/index.php/GRUB)

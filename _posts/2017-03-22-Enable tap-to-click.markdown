@@ -9,12 +9,12 @@ tags:   [archlinux, touchpad, libinput]
 Sometimes, it doesn't feel nice if you use touchpad and can't use tap to click, and for me, yes it's annoying to click button.
 
 you need to install ``libinput`` because ``synaptics`` ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
-{% highlight bash %}
- $ sudo pacman -S libinput xf86-input-libinput
-{% endhighlight %}
+```shell_session
+users $ sudo pacman -S libinput xf86-input-libinput
+```
 
 add ``30-touchpad.conf`` to ``/etc/X11/xorg.conf.d/:``
-```
+```conf
 Section "InputClass"
        Identifier "tap-by-default"
        MatchIsTouchpad "on"
@@ -26,11 +26,10 @@ EndSection
 ```
 
 To enable it in current session without restart:
-{% highlight bash %}
- $ sudo libinput-list-devices  
- $ xinput list-props "your touchpad devices"  
- # Enable tap-click  
- $ xinput set-prop "your touchpad devices" "libinput Tapping Enabled" 1
-{% endhighlight %}
-
+```shell_session
+users $ sudo libinput-list-devices  
+users $ xinput list-props "your touchpad devices"  
+Enable tap-click  
+users $ xinput set-prop "your touchpad devices" "libinput Tapping Enabled" 1
+```
 beside with ``xorg.conf.d``, you can automatic enabled it on boot by set ``xinput set-prop`` on ``xinitrc`` or autostart program you use.

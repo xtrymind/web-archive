@@ -19,16 +19,16 @@ but since android still use python2, and arch use python3 by default, you will h
 
 since it's like that, i'm using this trick to set up python2 :
 
-{% highlight shell %}
- $ sudo mkdir /opt/python2
- $ cd /opt/python2
- $ sudo ln -s $(which python2) python
-{% endhighlight %}
+```shell_session
+ users $ sudo mkdir /opt/python2
+ users $ cd /opt/python2
+ users $ sudo ln -s $(which python2) python
+```
 
 then put this on build script or paste on current terminal or in .zshrc or .bashrc
-{% highlight shell %}
+```conf
  export PATH="/opt/python2:$PATH"
-{% endhighlight %}
+```
  
 source :
  - [Arch Wiki](https://wiki.archlinux.org/index.php/Android)

@@ -8,7 +8,7 @@ tags:   [archlinux, geany, linux]
 ---
 
 If by any chance you came across geany problem of failed to load icon like
-```
+```shell_session
 (geany:2851): Geany-WARNING **: failed to load icon 'classviewer-var':
 Icon 'classviewer-var' not present in theme
 
@@ -34,6 +34,6 @@ for stock: Icon 'geany-save-all' not present in theme
 stock: Icon 'geany-build' not present in theme
 ```
 just run ``gtk-update-icon-cache`` hicolor icons to fix that
-{% highlight bash %}
- $ sudo gtk-update-icon-cache /usr/share/icons/hicolor -f
-{% endhighlight %}
+```shell_session
+users $ sudo gtk-update-icon-cache /usr/share/icons/hicolor -f
+```

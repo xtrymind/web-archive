@@ -11,10 +11,10 @@ On nautilus or gnome files, they set that shortcut by alt + arrow left, i'd like
 
 To change it to backspace, github user [riclc](https://github.com/riclc) create python extension to [Brings back the Backspace shortcut to Nautilus](https://github.com/riclc/nautilus_backspace) using nautilus python.
 
-{% highlight shell %}
- $ sudo pacman -S python2-nautilus
- # on ubuntu it command apt-get install python-nautilus
-{% endhighlight %}
+```shell_session
+users $ sudo pacman -S python2-nautilus
+on ubuntu it command apt-get install python-nautilus
+```
 
 download ``BackspaceBack.py`` on link above and put it in ``.local/share/nautilus-python/extensions/`` and then restart Nautilus ``killall nautilus``
 

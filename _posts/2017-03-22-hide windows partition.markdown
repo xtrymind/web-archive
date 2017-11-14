@@ -8,13 +8,13 @@ author: Dede Dindin Qudsy
 some people say it doesn't matter but some people say it's matter, YES.
 
 create ``/etc/udev/rules.d/99-hide-ntfs-partitions.rules``
-{% highlight bash %}
- KERNEL=="sda4", ENV{UDISKS_IGNORE}="1" 
-{% endhighlight %}
+```conf
+KERNEL=="sda4", ENV{UDISKS_IGNORE}="1" 
+```
 
 which `sda4` is windows partition you want to hide
 
-{% highlight bash %}
- $ sudo udevadm trigger 
-{% endhighlight %}
+```shell_session
+users $ sudo udevadm trigger 
+```
 

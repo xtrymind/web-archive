@@ -19,16 +19,16 @@ But yes, fortunately sony didn't completely remove adoptive feature, with adb sh
 
 You need to enable USB debugging on Developer options first, then do the following command :
 
-{% highlight shell %}
- # check your device connected or not
- $ adb devices
- # login to your phone shell
- $ adb shell
+```shell_session
+check your device connected or not
+users $ adb devices
+login to your phone shell
+users $ adb shell
  
- $ sm list-disks
-   disk:179,64
- $ sm partition disk:179,64 mixed 50
-{% endhighlight %}
+adb $ sm list-disks
+disk:179,64
+adb $ sm partition disk:179,64 mixed 50
+```
 
 Note :
  - ``mixed 50`` it's mean your sdcard will be halved, half for your adoptive and half for your sdcard, if you want smaller adoptive use ``mixed 70`` that mean, 30 for adoptive and 70 for your sdcard. 

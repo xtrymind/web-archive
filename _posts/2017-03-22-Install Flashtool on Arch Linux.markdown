@@ -15,33 +15,33 @@ It includes XperiaFirm to download firmware instead of create bundle from sony s
 Manual way 
 
 clone aur ``git clone https://aur.archlinux.org/xperia-flashtool.git``
-{% highlight bash %}
- $ cd xperia-flashtool
- $ makepkg -si
-{% endhighlight %}
+```shell_session
+users $ cd xperia-flashtool
+users $ makepkg -si
+```
 
 Using Pacaur
-{% highlight bash %}
- $ pacaur -S xperia-flashtool
-{% endhighlight %}
+```shell_session
+users $ pacaur -Sa xperia-flashtool
+```
 
 #### Manual
 Download Flashtool for linux at <a href="http://www.flashtool.net/downloads_linux.php">here</a>
 
 unzip using command
-{% highlight bash %}
- $ 7z x flashtool-0.9.23.1-linux.tar.7z && tar -xvf flashtool-0.9.23.1-linux.tar
-{% endhighlight %}
+```shell_session
+users $ 7z x flashtool-0.9.23.1-linux.tar.7z && tar -xvf flashtool-0.9.23.1-linux.tar
+```
 
 create ``/etc/udev/rules.d/63-sonyxperia.rules``
-{% highlight bash %}
- SUBSYSTEM=="usb", ACTION=="add", SYSFS{idVendor}=="0fce", SYSFS{idProduct}=="*", MODE="0777"
-{% endhighlight %}
+```conf
+SUBSYSTEM=="usb", ACTION=="add", SYSFS{idVendor}=="0fce", SYSFS{idProduct}=="*", MODE="0777"
+```
 
 restart udev
-{% highlight bash %}
- sudo udevadm trigger
-{% endhighlight %}
+```shell_session
+users $ sudo udevadm trigger
+```
 
 And then just cd to flashtool directory and start with sudo ./Flashtool
 

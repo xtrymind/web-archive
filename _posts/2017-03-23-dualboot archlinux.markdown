@@ -6,7 +6,7 @@ date:   2017-03-23 14:20:26 +0700
 author: Dede Dindin Qudsy
 tags:   [archlinux, windows, Linux]
 ---
-`incomplete`
+`incomplete, need a lot of thing to do`
 
 **Table of Contents**
 
@@ -55,199 +55,219 @@ an example of Windows 10 Efi partitioning on 120GB SSD
 
 #### Format and mount disks
 
-{% highlight shell_session %}
- # mkfs.ext4 /dev/sda5
- # mount /dev/sda5 /mnt
- # mkdir /mnt/boot
- # mount /dev/sda2 /mnt/boot
-{% endhighlight %}
+```shell_session
+root # mkfs.ext4 /dev/sda5
+root # mount /dev/sda5 /mnt
+root # mkdir /mnt/boot
+root # mount /dev/sda2 /mnt/boot
+```
 ### Install base system
 
-{% highlight bash %}
- wifi-menu
- # check connections
- ping  -c 3 www.google.com
+```shell_session
+root # wifi-menu
+check connections
+root # ping  -c 3 www.google.com
+```
 
- # install base system
- pacstrap /mnt base base-devel zsh
- # generate fstab
- genfstab -U /mnt >> /mnt/etc/fstab
-{% endhighlight %}
+install system and generate fstab
+
+```shell_session
+install base base development zsh and vim to /mnt 
+root # pacstrap /mnt base base-devel zsh nvim
+generate new fstab
+root # genfstab -U /mnt >> /mnt/etc/fstab
+```
+
 
 ### Configure base system
 #### Chroot
-{% highlight bash %}
- # enter chroot
- arch-chroot /mnt
- 
- # password for root
- passwd
- 
- # timezone
- ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
- # Hardware clock
- hwclock --systohc
- 
- # Locale
- nano /etc/locale.gen
- # uncomment `en_US.UTF-8`
- locale-gen
- echo LANG=en_US.UTF-8 > /etc/locale.conf
- export LANG=en_US.UTF-8
- 
- # Hostname
- echo arch >> /etc/hostname
+```shell_session
+enter chroot
+root # arch-chroot /mnt
 
- # edit /etc/hosts
- 127.0.0.1   localhost.localdomain   localhost 
+password for root
+root # passwd
+
+timezone
+root # ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+Hardware clock
+root # hwclock --systohc
+
+Locale
+root # nvim /etc/locale.gen
+uncomment `en_US.UTF-8` and `en_GB.UTF-8` for metric :))
+root # locale-gen
+root # echo LANG=en_US.UTF-8 > /etc/locale.conf
+root # export LANG=en_US.UTF-8
+
+Hostname
+root # echo arch > /etc/hostname
+```
+```conf
+# edit /etc/hosts
+ 127.0.0.1   localhost.localdomain   localhost
  ::1         localhost.localdomain   localhost
- 127.0.1.1   arch.localdomain        arch 
-{% endhighlight %}
+ 127.0.1.1   arch.localdomain        arch
+```
 
 #### Bootloader
-{% highlight shell %}
- # install intel ucode 
- pacman -S intel-ucode
- # Initial ramdisk environment
- mkinitcpio -p linux
+```shell_session
+install intel ucode if you have intel processor
+root # pacman -S intel-ucode
 
- # install bootloader
- bootctl --path=/boot install
+Initial ramdisk environment
+root # mkinitcpio -p linux
 
- # check partuuid of / partition
- blkid -s PARTUUID -o value /dev/sdxY
+install bootloader, using systemd-boot
+root # bootctl --path=/boot install
 
- #Then add following content to /boot/loader/entries/arch.conf
+check partuuid of / partition
+root # blkid -s PARTUUID -o value /dev/sdxY
+```
 
- tittle    Arch
- linux     /vmlinuz-linux
- initrd    /initramfs-linux.img
- initrd    /intel-ucode.img
- options   root=PARTUUID=xxxxx-xxx-xx rw
-
- # change entries on /boot/loader/loader.conf
- timeout 5
- default arch
-{% endhighlight %}
+```conf
+# Then add following content to /boot/loader/entries/arch.conf
+tittle    Arch
+linux     /vmlinuz-linux
+initrd    /initramfs-linux.img
+initrd    /intel-ucode.img
+options   root=PARTUUID=xxxxx-xxx-xx rw
+```
+```conf
+# change entries on /boot/loader/loader.conf
+timeout 5
+default arch
+```
 
 #### Network
 
-{% highlight bash %}
-
- # Network configuration (Wi-Fi)
- pacman -S wpa_supplicant networkmanager
- systemctl enable NetworkManager
-{% endhighlight %}
+```shell_session
+Network configuration (Wi-Fi)
+root # pacman -S wpa_supplicant networkmanager
+root # systemctl enable NetworkManager
+```
 #### Reboot
-{% highlight bash %}
- exit
- umount -R /mnt/boot
- umount -R /mnt
- reboot
-{% endhighlight %}
+```shell_session
+root # exit
+root # umount -R /mnt
+root # reboot
+```
 
 ### After installation
 
-#### Connect to the internet 
-{% highlight bash %}
- nmtui
- ping google.co.id 
-{% endhighlight %}
+#### Connect to the internet
+```shell_session
+root # nmtui
+root # ping google.co.id
+```
 
 #### User Management
-{% highlight bash %}
-  useradd -m -G wheel -s /bin/zsh xtrymind
-  passwd xtrymind
-  
- #enable sudo for users
- EDITOR=nano visudo
- #Un-comment this line in nano:
- %wheel ALL=(ALL) ALL
-{% endhighlight %}
+```shell_session
+add user
+root # useradd -m -G wheel,users -s /bin/zsh xtrymind
+root # passwd xtrymind
+
+enable sudo for users
+root # EDITOR=nvim visudo
+```
+```conf
+# Uncomment this line in nvim:
+%wheel ALL=(ALL) ALL
+```
 
 #### Arch User Repository
 ``pacaur`` is popular front end for installing aur package
-{% highlight bash %}
- $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/xtrymind/dotfiles/master/pacaur.sh)"
-{% endhighlight %}
+```shell_session
+users $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/xtrymind/dotfiles/master/pacaur.sh)"
+```
 
 #### Mirror
-{% highlight bash %}
- # best mirror
- $ sudo pacman -S reflector
- $ sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
- 
- # enable 32bit support
- # In `/etc/pacman.conf`, uncomment:
-
- [multilib]
- Include = /etc/pacman.d/mirrorlist
-
- $ sudo pacman -Sy
-{% endhighlight %}
+```shell_session
+best mirror
+users $ sudo pacman -S reflector
+users $ sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+```
+```conf
+# enable 32bit support
+# In `/etc/pacman.conf`, uncomment:
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+```shell_session
+users $ sudo pacman -Sy
+```
 
 #### Display
 
 #### Driver
-{% highlight bash %}
- $ sudo pacman -S nvidia mesa
-{% endhighlight %}
+```shell_session
+users $ sudo pacman -S nvidia mesa
+```
 
 #### Xorg
-{% highlight bash %}
- $ sudo pacman -S xorg-server xorg-server-utils xorg-xinit xterm xbindkeys
-{% endhighlight %}
+```shell_session
+users $ sudo pacman -S xorg xorg-apps xorg-xinit xbindkeys
+```
 
 #### Bumblebee
-{% highlight bash %}
- $ sudo pacman -S bbswitch bumblebee
- $ sudo gpasswd -a xtrymind bumblebee
- $ sudo systemctl enable bumblebeed
-{% endhighlight %}
+```shell_session
+users $ sudo pacman -S bbswitch bumblebee
+users $ sudo gpasswd -a xtrymind bumblebee
+users $ sudo systemctl enable bumblebeed
+```
 
-{% highlight bash %}
- # Reboot. After rebooting, you should see that bbswitch has disabled the card,
- # which is good for saving the battery on the laptop
- $ cat /proc/acpi/bbswitch
- 0000:01:00.0 OFF
-{% endhighlight %}
+```shell_session
+Reboot. After rebooting, you should see that bbswitch has disabled the card, which is good for saving the battery on the laptop
+users $ cat /proc/acpi/bbswitch
+0000:01:00.0 OFF
+```
 
+#### WM
+install i3 as window manager
+```shell_session
+users $ sudo pacman -S i3
+copy xinit to home dirrectory
+users $ cp /etc/X11/xinit/xinitrc ~/.xinitrc
+```
+```conf
+# open .xinitrc and delete started from twm & to exec xterm and add
+exec i3
+```
 
 #### Terminal
-rxvt-unicode or urxvt is a nice terminal it's small and simple to configure (well it's will take a while to get the best configurations :p)
+rxvt-unicode or urxvt is a nice terminal emulator, it's small and fast but a little complicated to configure
+```shell_session
+users $ sudo pacman -S rxvt-unicode urxvt-perls
+```
 
-{% highlight bash %}
- $ sudo pacman -S rxvt-unicode urxvt-perls
-{% endhighlight %}
-
-check [arch wiki](https://wiki.archlinux.org/index.php/Rxvt-unicode) for more detil to configure.
+check [arch wiki](https://wiki.archlinux.org/index.php/Rxvt-unicode) for more detail on how to configure urxvt.
 
 #### Touchpad
 install libinput because xf86-input-synaptics ( based on Arch Wiki ) is in maintenance mode and is no longer updated.
-{% highlight bash %}
-$ sudo pacman -S libinput xf86-input-libinput
-{% endhighlight %}
+```shell_session
+users $ sudo pacman -S libinput xf86-input-libinput
+```
 
 add ``30-touchpad.conf`` to ``/etc/X11/xorg.conf.d/:``
-{% highlight bash %}
- Section "InputClass"
-       Identifier "tap-by-default"
-       MatchIsTouchpad "on"
-       MatchDriver "libinput"
-       Option "Tapping" "on"
-       Option "Natural Scrolling" "on"
-       Option "Accel Speed" "0.5"
- EndSection
-{% endhighlight %}
+```conf
+Section "InputClass"
+      Identifier "tap-by-default"
+      MatchIsTouchpad "on"
+      MatchDriver "libinput"
+      Option "Tapping" "on"
+      Option "Natural Scrolling" "on"
+      Option "Accel Speed" "0.5"
+EndSection
+```
 
 #### Power Management
 #### Powertop
 install it by command
-{% highlight bash %}
- $ sudo pacman -S powertop
-{% endhighlight %}
+```shell_session
+users $ sudo pacman -S powertop
+```
 and add systemd service, create ``/etc/systemd/system/powertop.service```
-{% highlight bash %}
+```conf
 [Unit]
 Description=Powertop tunings
 
@@ -257,66 +277,66 @@ ExecStart=/usr/bin/powertop --auto-tune
 
 [Install]
 WantedBy=multi-user.target
-{% endhighlight %}
+```
 then enable it
-{% highlight bash %}
- $ sudo systemctl enable powertop.service
-{% endhighlight %}
+```shell_session
+users $ sudo systemctl enable powertop.service
+```
 #### Backlight
 
 The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.
 
-{% highlight bash %}
- $ pacaur -y light
-{% endhighlight %}
+```shell_session
+users $ pacaur -y light
+```
 Now, add commands to xbindkeys for manipulating the backlight:
 
-{% highlight bash %}
- # Backlight Inc
- "/usr/bin/light -A 5"
-    m:0x0 + c:233
-    XF86MonBrightnessUp
+```conf
+# Backlight Inc
+"/usr/bin/light -A 5"
+   m:0x0 + c:233
+   XF86MonBrightnessUp
 
- # Backligth Dec
- "/usr/bin/light -U 5"
-    m:0x0 + c:232
-    XF86MonBrightnessDown
-{% endhighlight %}
+# Backligth Dec
+"/usr/bin/light -U 5"
+   m:0x0 + c:232
+   XF86MonBrightnessDown
+```
 
 #### Sound
 
 Just install ``alsa-utils``, and use ``alsamixer`` to unmute the master channel. Should just work.
 
 For keyboard hotkeys, add the following to ``xbindkeys`` configuration:
-{% highlight bash %}
- # Volume Up
- "/usr/bin/amixer set Master 5%+"
-    m:0x0 + c:123
-    XF86AudioRaiseVolume
+```conf
+# Volume Up
+"/usr/bin/amixer set Master 5%+"
+   m:0x0 + c:123
+   XF86AudioRaiseVolume
 
- # VOlume Down
- "/usr/bin/amixer set Master 5%-"
-    m:0x0 + c:122
-    XF86AudioLowerVolume
+# VOlume Down
+"/usr/bin/amixer set Master 5%-"
+   m:0x0 + c:122
+   XF86AudioLowerVolume
 
- # Mute
- "/usr/bin/amixer set Master toggle"
-    m:0x0 + c:121
-    XF86AudioMute
-{% endhighlight %}
+# Mute
+"/usr/bin/amixer set Master toggle"
+   m:0x0 + c:121
+   XF86AudioMute
+```
 #### Disk
 #### SSD
 Enable trim support
-{% highlight bash %}
- $ sudo systemctl enable fstrim.timer
-{% endhighlight %}
+```shell_session
+users $ sudo systemctl enable fstrim.timer
+```
 #### HDAPSD
 
 Protects your hard drive from sudden shocks
 
-{% highlight bash %}
-$ pacman -S hdapsd
-$ systemctl enable hdapsd
-{% endhighlight %}
+```shell_session
+users $ sudo pacman -S hdapsd
+users $ sudo systemctl enable hdapsd
+```
 
 
