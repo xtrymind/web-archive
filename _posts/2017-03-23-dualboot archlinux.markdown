@@ -146,6 +146,10 @@ Network configuration (Wi-Fi)
 root # pacman -S wpa_supplicant networkmanager
 root # systemctl enable NetworkManager
 ```
+Asus A46CB use Qualcomm Atheros AR9485 as Wi-Fi chipset, in my experience, if you connect to public wi-fi which you need to login first on web, you will get some random disconnect and decrease bandwidth, to resolve just add `options ath9k nohwcrypt=1` to `/etc/modprobe.d/ath9k.conf `
+```shell_session
+root # echo options ath9k nohwcrypt=1 >> /etc/modprobe.d/ath9k.conf 
+```
 #### Reboot
 ```shell_session
 root # exit
