@@ -52,7 +52,10 @@ users $ refind-install
 refind will find your ESP partitions but in case something wrong, you can manualy pointed your ESP where /dev/sdaXY is your ESP partitions
 users $ refind-install --usedefault /dev/sdXY
 ```
-
+to add microcode, edit `/boot/refind_linux.conf `
+```conf
+"Boot with standard options" "rw root=UUID=(...) quiet initrd=/boot/intel-ucode.img"
+```
 More info :[rEFInd](https://wiki.archlinux.org/index.php/REFInd)
 
 ### GRUB
