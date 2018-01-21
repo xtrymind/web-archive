@@ -11,7 +11,7 @@ if you have root on your phone, then it's piece of cake, BBS will ask you to gra
 
 On xiaomi device, you need to enable usb debugging and usb debugging (Security Settings) first. go to about phone-> tap on MIUI version 7 times-> then go to Additional settings-> developer options-> and toggle usb debugging and usb debugging(security settings)
 
-![Imgur](https://i.imgur.com/Y45qr2Q.png)
+![Imgur](https://i.imgur.com/Y45qr2Q.png){:height="60%" width="60%"}
 
 then connect to your PC open terminal and type 
 {% highlight shell_session %}
@@ -27,4 +27,4 @@ mido:/ $ pm grant com.asksven.betterbatterystats android.permission.PACKAGE_USAG
 
 that's it, you can view in BBS what app has been sucked you battery
 
-![Imgur](https://i.imgur.com/1YHFLUE.png)
+![Imgur](https://i.imgur.com/1YHFLUE.png){:height="60%" width="60%"}
