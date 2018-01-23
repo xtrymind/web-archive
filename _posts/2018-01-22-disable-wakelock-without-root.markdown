@@ -4,6 +4,8 @@ comments: true
 title:  "Disable wakelock withour root on Xiaomi Devices"
 date:   2018-01-22 12:57:00 +0700
 author: Dede Dindin Qudsy
+last_modified_at: 2018-01-24 06:44:00 +0700
+desc_update: "Add screenshot"
 ---
 after succesfully configure [BetterBatteryStats](use-bbs-non-root.html), it's time to see what apps that has lots of wakelocks. Open BetterBatteryStats and go over Partial Wakelocks, you will see an apps that have wakelocks there.
 
@@ -21,5 +23,11 @@ users $ cmd appops set com.twitter.android WAKE_LOCK ignore
 {% endhighlight %}
 
 and that's it, all wakelocks requests by the app will be ignored by the Android system
+
+Update 24-01-2018/06:42 :
+
+Twitter app ignored wakelocks
+
+![Imgur](https://i.imgur.com/EOR9nA8.png){:height="50%" width="50%"}
 
 Source: [XDA](https://www.xda-developers.com/stop-wakelocks-android-without-root/)
