@@ -73,7 +73,7 @@ install system and generate fstab
 
 ```shell_session
 install base base development zsh and vim to /mnt 
-root # pacstrap /mnt base base-devel zsh nvim
+root # pacstrap /mnt base base-devel zsh vim
 generate new fstab
 root # genfstab -U /mnt >> /mnt/etc/fstab
 ```
@@ -94,8 +94,8 @@ Hardware clock
 root # hwclock --systohc
 
 Locale
-root # nvim /etc/locale.gen
-uncomment `en_US.UTF-8` and `en_GB.UTF-8` for metric :))
+root # vim /etc/locale.gen
+uncomment `en_US.UTF-8` and `en_GB.UTF-8` for metric system
 root # locale-gen
 root # echo LANG=en_US.UTF-8 > /etc/locale.conf
 root # export LANG=en_US.UTF-8
@@ -143,7 +143,7 @@ default arch
 
 ```shell_session
 Network configuration (Wi-Fi)
-root # pacman -S wpa_supplicant networkmanager
+root # pacman -S wpa_supplicant networkmanager dialog
 root # systemctl enable NetworkManager
 ```
 Asus A46CB use Qualcomm Atheros AR9485 as Wi-Fi chipset, in my experience, if you connect to public wi-fi which you need to login first on web, you will get some random disconnect and decrease bandwidth, to resolve just add `options ath9k nohwcrypt=1` to `/etc/modprobe.d/ath9k.conf `
@@ -172,17 +172,11 @@ root # useradd -m -G wheel,users -s /bin/zsh xtrymind
 root # passwd xtrymind
 
 enable sudo for users
-root # EDITOR=nvim visudo
+root # EDITOR=vim visudo
 ```
 ```conf
-# Uncomment this line in nvim:
+# Uncomment this line in vim:
 %wheel ALL=(ALL) ALL
-```
-
-#### Arch User Repository
-``pacaur`` is popular front end for installing aur package
-```shell_session
-users $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/xtrymind/dotfiles/master/pacaur.sh)"
 ```
 
 #### Mirror
@@ -253,14 +247,18 @@ users $ sudo pacman -S libinput xf86-input-libinput
 ```
 
 add ``30-touchpad.conf`` to ``/etc/X11/xorg.conf.d/:``
+```shell_session
+users $ sudo vim /etc/X11/xorg.conf.d/30-touchpad.conf
+```
+
 ```conf
 Section "InputClass"
-      Identifier "tap-by-default"
-      MatchIsTouchpad "on"
-      MatchDriver "libinput"
-      Option "Tapping" "on"
-      Option "Natural Scrolling" "on"
-      Option "Accel Speed" "0.5"
+	Identifier "touchpad"
+	Driver "libinput"
+	MatchIsTouchpad "on"
+	Option "Tapping" "on"
+	Option "Natural Scrolling" "on"
+	Option "Accel Speed" "0.5"
 EndSection
 ```
 
