@@ -199,7 +199,7 @@ users $ sudo pacman -Sy
 
 #### Driver
 ```shell_session
-users $ sudo pacman -S nvidia mesa
+users $ sudo pacman -S nvidia mesa xf86-video-intel
 ```
 
 #### Xorg
@@ -289,20 +289,34 @@ users $ sudo systemctl enable powertop.service
 The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.
 
 ```shell_session
-users $ pacaur -y light
+users $ sudo pacman -S xorg-backlight
+```
+add ``20-intel.conf`` to ``/etc/X11/xorg.conf.d/:``
+```shell_session
+users $ sudo vim /etc/X11/xorg.conf.d/20-intel.conf
+```
+```conf
+Section "Device"
+	Identifier  "Intel Graphics"
+	Driver      "intel"
+	Option      "DRI" "2"             # DRI3 is now default
+	Option 		"TearFree" "true"
+	#Option      "AccelMethod"  "sna" # default
+	#Option      "AccelMethod"  "uxa" # fallback
+EndSection
 ```
 Now, add commands to xbindkeys for manipulating the backlight:
 
 ```conf
 # Backlight Inc
-"/usr/bin/light -A 5"
-   m:0x0 + c:233
-   XF86MonBrightnessUp
+"/usr/bin/xbacklight -inc 5"
+    m:0x0 + c:233
+    XF86MonBrightnessUp
 
 # Backligth Dec
-"/usr/bin/light -U 5"
-   m:0x0 + c:232
-   XF86MonBrightnessDown
+"/usr/bin/xbacklight -dec 5"
+    m:0x0 + c:232
+    XF86MonBrightnessDown
 ```
 
 #### Sound
