@@ -284,6 +284,14 @@ then enable it
 ```shell_session
 users $ sudo systemctl enable powertop.service
 ```
+
+#### Laptop Mode
+see this [kernel documentation](https://www.kernel.org/doc/Documentation/laptops/laptop-mode.txt) about laptop mode, it help minimize the time that the hard disk needs to be spun up, to conserve battery power on laptops.
+create ``/etc/sysctl.d/laptop.conf``
+```conf
+vm.laptop_mode = 5
+```
+
 #### Backlight
 
 The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.
