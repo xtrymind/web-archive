@@ -287,7 +287,9 @@ users $ sudo systemctl enable powertop.service
 
 #### Laptop Mode
 see this [kernel documentation](https://www.kernel.org/doc/Documentation/laptops/laptop-mode.txt) about laptop mode, it help minimize the time that the hard disk needs to be spun up, to conserve battery power on laptops.
+
 create ``/etc/sysctl.d/laptop.conf``
+and add :
 ```conf
 vm.laptop_mode = 5
 ```
