@@ -40,6 +40,15 @@ ul, ol, dl, figure,
 
 
 /**
+ * `main` element
+ */
+main {
+  display: block; /* Default value of `display` of `main` element is 'inline' in IE 11. */
+}
+
+
+
+/**
  * Images
  */
 img {
@@ -85,21 +94,22 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
 }
 
+
+
 /**
  * Links
  */
 a {
   color: $brand-color;
-  //@include fake-underline(lighten($blue,20%));
   text-decoration: none;
+
   &:visited {
     color: darken($brand-color, 15%);
   }
 
   &:hover {
-    color: $brand-color;
-	
-  //@include fake-underline(lighten($blue,40%));
+    color: $text-color;
+    text-decoration: underline;
   }
 
   .social-media-list &:hover {
@@ -136,11 +146,9 @@ blockquote {
 pre,
 code {
   @include relative-font-size(0.9375);
-  /*border: 1px solid #333;*/
-  border-radius: 4px;
-  color: #fff;
-  background-color: #333;
-  white-space: pre-wrap;
+  border: 1px solid $grey-color-light;
+  border-radius: 3px;
+  background-color: #eef;
 }
 
 code {
@@ -196,20 +204,17 @@ pre {
 /**
  * Icons
  */
-.icon > svg {
-  display: inline-block;
-  vertical-align: middle;
 
-  path {
-    fill: $grey-color;
-  }
+.svg-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    fill: #{$grey-color};
+    padding-right: 5px;
+    vertical-align: text-top;
 }
 
 .social-media-list {
-  .icon {
-    padding-right: 5px;
-  }
-
   li + li {
     padding-top: 5px;
   }

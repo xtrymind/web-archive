@@ -4,7 +4,7 @@
 .site-header {
   border-top: 5px solid $grey-color-dark;
   border-bottom: 1px solid $grey-color-light;
-  min-height: $spacing-unit * 1.865;
+  min-height: $header-spacing-unit;
 
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -107,12 +107,11 @@
  */
 .site-footer {
   border-top: 1px solid $grey-color-light;
-  p {
-	text-align: center;
-	margin-top: 10px;
-	//margin-bottom: 5px;
-	height: 20px;
-  }
+  padding: 10px 0 0px;
+}
+
+.site-footer p {
+  text-align: center;
 }
 
 .footer-heading {
@@ -181,11 +180,15 @@
  * Page content
  */
 .page-content {
-  padding: $spacing-unit 0;
+  padding: $pc-spacing-unit 0;
 }
 
 .page-heading {
-  @include relative-font-size(1.25);
+  @include relative-font-size(2);
+}
+
+.post-list-heading {
+  @include relative-font-size(1.75);
 }
 
 .post-list {
@@ -193,50 +196,43 @@
   list-style: none;
 
   > li {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit / 3;
+    clear: both;
+    line-height: 1;
   }
 }
 
+.post-date {
+    width: 8em;
+    float: left;
+}
+
 .post-meta {
-  font-size: $small-font-size;
+  float: left;
+  font-size: $base-font-size;
   color: $grey-color;
 }
 
 .post-link {
   display: block;
-  @include relative-font-size(1.3);
-    
-  a {
-    color: $text-color;
-		&:visited {
-			color: $text-color;
-		}
-		
-		&:hover {
-			color: $line;
-		}
-  }
+  font-size: $base-font-size;
 }
 
-.post-excerpt {
-  color: $grey-color;
-  font-style: italic;
-}
 
 
 /**
  * Posts
  */
 .post-header {
-  margin-bottom: $spacing-unit;
+  margin-bottom: $spacing-unit / 3;
 }
 
 .post-title {
   @include relative-font-size(2.125);
   letter-spacing: -1px;
   line-height: 1;
-  margin-bottom:10px;
-  
+  margin-bottom: 2px;
+
   @include media-query($on-laptop) {
     @include relative-font-size(2.25);
   }
@@ -244,20 +240,10 @@
 
 .post-content {
   margin-bottom: $spacing-unit;
-  
-  a {
-    color: $brand-color;
-    @include fake-underline(lighten($grey-color,20%));
- 
-  &:visited {
-    color: darken($brand-color, 15%);
-  }
 
-  &:hover {
-    @include fake-underline(lighten($line,5%));
+  p {
+	margin-bottom: 10px;
   }
-  }
-  
   h2 {
     @include relative-font-size(2);
 
@@ -265,7 +251,7 @@
       @include relative-font-size(1.75);
     }
   }
-  
+
   h3 {
     @include relative-font-size(1.625);
 
@@ -281,61 +267,4 @@
       @include relative-font-size(1.125);
     }
   }
-}
-
-/* To center images */
-.center {
-    text-align: center;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 200px;
-    color: #000;
-    text-align: center;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 120%;
-    left: 40%;
-    margin-left: -90px;
-}
-
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 47%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-
-.about{
-    // height: 200px;
-    // line-height: 200px;
-    // float: left;
-    text-align: center;
-    font-size: $large-font-size;
-    padding-bottom: $spacing-unit;
-}
-
-.img-container img {
-    max-height: 100%;
-}
-
-.img-circle {
-    height: 200px;
-    border-radius: 50%;
-    padding-bottom: 10px;
 }

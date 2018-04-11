@@ -16,10 +16,10 @@
 title: xtrymind
 email: xtrymind@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  a blog fill with random writing about android, linux, windows, 
-  and other stuff that i find interesting.
+  Random writing about android, linux, windows and something interesting.
+
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://xtrymind.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: xtrymind
 github_username:  xtrymind
 
@@ -28,13 +28,9 @@ google_analytics: UA-106200856-1
 
 # Build settings
 markdown: kramdown
-highlighter: rouge
-
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-last-modified-at
-  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
