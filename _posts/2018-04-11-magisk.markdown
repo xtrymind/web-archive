@@ -13,4 +13,4 @@ Stable build :
  - [v16.0](https://drive.google.com/a/my.smccd.edu/uc?id=1zb_2Z4S2x5291ZXtfMhcNI01u2UDDKrR&export=download) by [abhishek987](https://forum.xda-developers.com/member.php?u=6070905)
 
 Beta build :
- - [v16.3](https://www.androidfilehost.com/?fid=673956719939834008)
+ - [v16.3](https://www.dropbox.com/s/c0pkqvdwjikypke/Magisk-v16.3-cust.zip?dl=0)
