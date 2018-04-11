@@ -1,0 +1,16 @@
+---
+layout: post
+comments: true
+title:  "Magisk for xiaomi (unofficial) treble device"
+date:   2018-04-11 0:30:00 +0700
+author: Dede Dindin Qudsy
+---
+For xiaomi devices with unofficial support of treble, it use unused `cust` partition as `vendor` partititon. In Magisk to mount `/vendor` partition, it search partition with name vendor then mount it, it's problem with xiaomi device that uses `/cust` as `vendor` because it name still `cust`. As of now, since topjohnwu on military duty, there isn't official way to handle this issue, as unofficial way, we change mount `vendor` to mount `cust`.
+
+This is just self compiled Magisk with change on mount `vendor` to `cust` partition
+
+Stable build :
+ - [v16.0](https://drive.google.com/a/my.smccd.edu/uc?id=1zb_2Z4S2x5291ZXtfMhcNI01u2UDDKrR&export=download) by [abhishek987](https://forum.xda-developers.com/member.php?u=6070905)
+
+Beta build :
+ - [v16.3](https://www.androidfilehost.com/?fid=673956719939834008)
