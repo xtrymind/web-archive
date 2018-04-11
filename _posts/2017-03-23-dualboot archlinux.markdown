@@ -294,6 +294,18 @@ and add :
 vm.laptop_mode = 5
 ```
 
+#### Disable Bluetooth
+As my AC46CB uses ar9485 as wifi+bluetooth module, i always get error on dmesg caused by crappy ar9485 chipset mainly bluetooth module.
+```shell
+$ [ 3499.880081] usb 2-3: device descriptor read/64, error -110
+$ [ 3515.096081] usb 2-3: device descriptor read/64, error -110
+```
+to disable it make udev rule `/etc/udev/rules.d/50-bluetooth.rules`
+```conf
+# disable bluetooth
+SUBSYSTEM=="rfkill", ATTR{type}=="bluetooth", ATTR{state}="0"
+```
+
 #### Backlight
 
 The display’s backlight is a huge power drain, and it is often convenient to have a hotkey to adjust it.
