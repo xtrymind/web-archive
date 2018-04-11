@@ -208,6 +208,11 @@
 }
 
 .post-meta {
+  font-size: $small-font-size;
+  color: $grey-color;
+}
+
+.post-meta-home {
   float: left;
   font-size: $base-font-size;
   color: $grey-color;
