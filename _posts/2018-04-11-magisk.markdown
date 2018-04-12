@@ -5,9 +5,27 @@ title:  "Magisk for xiaomi (unofficial) treble device"
 date:   2018-04-11 0:30:00 +0700
 author: Dede Dindin Qudsy
 ---
-For xiaomi devices with unofficial support of treble, it use unused `cust` partition as `vendor` partititon. In Magisk to mount `/vendor` partition, it search partition with name vendor then mount it, it's problem with xiaomi device that uses `/cust` as `vendor` because it name still `cust`. As of now, since topjohnwu on military duty, there isn't official way to handle this issue, as unofficial way, we change mount `vendor` to mount `cust`.
+For xiaomi devices with unofficial support of treble, it use unused `/cust` partition as `/vendor` partititon. As Magisk mount `/vendor` partition, it mount partition with name vendor, this won't work on xiaomi devices with unofficial support of treble as it didn't have `/vendor` partition.
 
-This is just self compiled Magisk with change on mount `vendor` to `cust` partition
+As workaround till topjohnwu came with official support for xiaomi unofficial treble devices, we rename vendor to cust in `magiskinit.c` so it will mount `/cust` partition as vendor.
+
+```diff
+diff --git a/native/jni/core/magiskinit.c b/native/jni/core/magiskinit.c
+index d555a9a..e2d2058 100644
+--- a/native/jni/core/magiskinit.c
++++ b/native/jni/core/magiskinit.c
+@@ -502,7 +502,7 @@ int main(int argc, char *argv[]) {
+                }
+
+                // Mount vendor
+-               snprintf(partname, sizeof(partname), "vendor%s", cmd.slot);
++               snprintf(partname, sizeof(partname), "cust%s", cmd.slot);
+                if (setup_block(&dev, partname) == 0)
+                        xmount(dev.path, "/vendor", "ext4", MS_RDONLY, NULL);
+        }
+```
+
+This is just self compiled Magisk with above code applied.
 
 Stable build :
  - [v16.0](https://drive.google.com/a/my.smccd.edu/uc?id=1zb_2Z4S2x5291ZXtfMhcNI01u2UDDKrR&export=download) by [abhishek987](https://forum.xda-developers.com/member.php?u=6070905)
