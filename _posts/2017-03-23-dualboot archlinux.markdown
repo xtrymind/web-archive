@@ -300,10 +300,12 @@ As my AC46CB uses ar9485 as wifi+bluetooth module, i always get error on dmesg c
 $ [ 3499.880081] usb 2-3: device descriptor read/64, error -110
 $ [ 3515.096081] usb 2-3: device descriptor read/64, error -110
 ```
-to disable it make udev rule `/etc/udev/rules.d/50-bluetooth.rules`
+to disable it make `/etc/modprobe.d/bluetooth.conf`
 ```conf
 # disable bluetooth
-SUBSYSTEM=="rfkill", ATTR{type}=="bluetooth", ATTR{state}="0"
+blacklist btusb bluetooth
+install btusb /bin/false
+install bluetooth /bin/false
 ```
 
 #### Backlight
