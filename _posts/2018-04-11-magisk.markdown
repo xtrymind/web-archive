@@ -72,3 +72,4 @@ Beta build :
  - [v16.3(1650)](https://www.dropbox.com/s/c0pkqvdwjikypke/Magisk-v16.3-cust.zip?dl=0)
  - [v16.3(1660)](https://www.dropbox.com/s/mwv04ge2br19knc/Magisk-v16.3%281660%29.zip?dl=0)
  - [v16.4(1642)](https://www.dropbox.com/s/2hua5u3zhgm1rqo/Magisk-v16.4.zip?dl=0)
+ - [v16.4(1643)](https://www.dropbox.com/s/1uzzvljurqzz8pt/Magisk-v16.4%281643%29.zip?dl=0)
