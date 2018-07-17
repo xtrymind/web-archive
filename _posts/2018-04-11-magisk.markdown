@@ -4,7 +4,7 @@ comments: true
 title:  "Magisk for xiaomi (unofficial) treble device"
 date:   2018-04-11 0:30:00 +0700
 author: Dede Dindin Qudsy
-last_modified_at: 2018-04-29 17:50:00 +0700
+last_modified_at: 2018-07-17 15:41:00 +0700
 ---
 For xiaomi devices with unofficial support of treble, it use unused `/cust` partition as `/vendor` partititon. As Magisk mount `/vendor` partition, it mount partition with name vendor, this won't work on xiaomi devices with unofficial support of treble as it didn't have `/vendor` partition.
 
@@ -73,3 +73,4 @@ Beta build :
  - [v16.3(1660)](https://www.dropbox.com/s/mwv04ge2br19knc/Magisk-v16.3%281660%29.zip?dl=0)
  - [v16.4(1642)](https://www.dropbox.com/s/2hua5u3zhgm1rqo/Magisk-v16.4.zip?dl=0)
  - [v16.4(1643)](https://www.dropbox.com/s/1uzzvljurqzz8pt/Magisk-v16.4%281643%29.zip?dl=0)
+ - [v16.6(1664)](https://www.androidfilehost.com/?fid=5862345805528050384)
