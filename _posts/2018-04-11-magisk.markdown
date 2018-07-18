@@ -6,6 +6,10 @@ date:   2018-04-11 0:30:00 +0700
 author: Dede Dindin Qudsy
 last_modified_at: 2018-07-17 15:41:00 +0700
 ---
+Update 2018-07-19 :
+At least, magisk finally support mount vendor partition when it is using another partition as vendor with [Magisk beta 16.7](https://forum.xda-developers.com/showpost.php?p=77108384&postcount=44) so no more build with patch below as we can use official build by John Wu.
+
+
 For xiaomi devices with unofficial support of treble, it use unused `/cust` partition as `/vendor` partititon. As Magisk mount `/vendor` partition, it mount partition with name vendor, this won't work on xiaomi devices with unofficial support of treble as it didn't have `/vendor` partition.
 
 As workaround till topjohnwu came with official support for xiaomi unofficial treble devices, we rename vendor to cust in `magiskinit.c` so it will mount `/cust` partition as vendor.
@@ -65,6 +69,9 @@ index c24e80e0..09ff931a 100644
 
 This is just self compiled Magisk with above code applied.
 
+Latest Magisk : 
+ - [v16.6(1664)](https://www.androidfilehost.com/?fid=5862345805528051322)
+
 Stable build :
  - [v16.0](https://drive.google.com/a/my.smccd.edu/uc?id=1zb_2Z4S2x5291ZXtfMhcNI01u2UDDKrR&export=download) by [abhishek987](https://forum.xda-developers.com/member.php?u=6070905)
 
@@ -74,3 +81,4 @@ Beta build :
  - [v16.4(1642)](https://www.dropbox.com/s/2hua5u3zhgm1rqo/Magisk-v16.4.zip?dl=0)
  - [v16.4(1643)](https://www.dropbox.com/s/1uzzvljurqzz8pt/Magisk-v16.4%281643%29.zip?dl=0)
  - [v16.6(1664)](https://www.androidfilehost.com/?fid=5862345805528050384)
+ - [v16.6(1664)](https://www.androidfilehost.com/?fid=5862345805528051322)
